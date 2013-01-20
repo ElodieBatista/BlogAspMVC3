@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Blog.Context;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -33,6 +34,18 @@ namespace Blog
 
         protected void Application_Start()
         {
+            // Create DB
+            Database.SetInitializer(new DataContextInit());
+
+            // Connection to DB and Test
+            using (var db = new BlogContext())
+            {
+                var query = from post in db.Posts
+                            select post;
+                var list = query.ToList();
+            }
+
+            
             AreaRegistration.RegisterAllAreas();
 
             // Use LocalDB for Entity Framework by default

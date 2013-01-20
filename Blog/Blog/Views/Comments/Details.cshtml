@@ -1,0 +1,29 @@
+@model Blog.Models.Comment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Comment</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">@Model.Name</div>
+
+    <div class="display-label">Text</div>
+    <div class="display-field">@Model.Text</div>
+
+    <div class="display-label">Posted</div>
+    <div class="display-field">@String.Format("{0:g}", Model.Posted)</div>
+
+    <div class="display-label">Post</div>
+    <div class="display-field">@(Model.Post == null ? "None" : Model.Post.Title)</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

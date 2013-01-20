@@ -1,0 +1,39 @@
+@model Blog.Models.Comment
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Name)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Name)
+    @Html.ValidationMessageFor(model => model.Name)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Text)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Text)
+    @Html.ValidationMessageFor(model => model.Text)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Posted)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Posted)
+    @Html.ValidationMessageFor(model => model.Posted)
+</div>
+
+<div class="editor-label">
+    Post
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.PostId, ((IEnumerable<Blog.Models.Post>)ViewBag.PossiblePosts).Select(option => new SelectListItem {
+        Text = (option == null ? "None" : option.Title), 
+        Value = option.Id.ToString(),
+        Selected = (Model != null) && (option.Id == Model.PostId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.PostId)
+</div>
