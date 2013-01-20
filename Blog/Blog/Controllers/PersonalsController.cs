@@ -9,24 +9,14 @@ namespace Blog.Controllers
 {   
     public class PersonalsController : Controller
     {
-		private readonly IPersonalRepository personalRepository;
-
-		// If you are using Dependency Injection, you can delete the following constructor
-        public PersonalsController() : this(new PersonalRepository())
-        {
-        }
-
-        public PersonalsController(IPersonalRepository personalRepository)
-        {
-			this.personalRepository = personalRepository;
-        }
+        private UnitOfWork unitOfWork = new UnitOfWork();
 
         //
         // GET: /Personals/
 
         public ViewResult Index()
         {
-            return View(personalRepository.All);
+            return View(unitOfWork.PersonalRepository.All);
         }
 
         //
@@ -34,7 +24,7 @@ namespace Blog.Controllers
 
         public ViewResult Details(System.Guid id)
         {
-            return View(personalRepository.Find(id));
+            return View(unitOfWork.PersonalRepository.Find(id));
         }
 
         //
@@ -52,8 +42,8 @@ namespace Blog.Controllers
         public ActionResult Create(Personal personal)
         {
             if (ModelState.IsValid) {
-                personalRepository.InsertOrUpdate(personal);
-                personalRepository.Save();
+                unitOfWork.PersonalRepository.InsertOrUpdate(personal);
+                unitOfWork.PersonalRepository.Save();
                 return RedirectToAction("Index");
             } else {
 				return View();
@@ -65,7 +55,7 @@ namespace Blog.Controllers
  
         public ActionResult Edit(System.Guid id)
         {
-             return View(personalRepository.Find(id));
+            return View(unitOfWork.PersonalRepository.Find(id));
         }
 
         //
@@ -75,8 +65,8 @@ namespace Blog.Controllers
         public ActionResult Edit(Personal personal)
         {
             if (ModelState.IsValid) {
-                personalRepository.InsertOrUpdate(personal);
-                personalRepository.Save();
+                unitOfWork.PersonalRepository.InsertOrUpdate(personal);
+                unitOfWork.PersonalRepository.Save();
                 return RedirectToAction("Index");
             } else {
 				return View();
@@ -88,7 +78,7 @@ namespace Blog.Controllers
  
         public ActionResult Delete(System.Guid id)
         {
-            return View(personalRepository.Find(id));
+            return View(unitOfWork.PersonalRepository.Find(id));
         }
 
         //
@@ -97,8 +87,8 @@ namespace Blog.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(System.Guid id)
         {
-            personalRepository.Delete(id);
-            personalRepository.Save();
+            unitOfWork.PersonalRepository.Delete(id);
+            unitOfWork.PersonalRepository.Save();
 
             return RedirectToAction("Index");
         }
@@ -106,7 +96,7 @@ namespace Blog.Controllers
         protected override void Dispose(bool disposing)
         {
             if (disposing) {
-                personalRepository.Dispose();
+                unitOfWork.PersonalRepository.Dispose();
             }
             base.Dispose(disposing);
         }

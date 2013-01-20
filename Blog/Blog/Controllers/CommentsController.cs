@@ -9,26 +9,14 @@ namespace Blog.Controllers
 {   
     public class CommentsController : Controller
     {
-		private readonly IPostRepository postRepository;
-		private readonly ICommentRepository commentRepository;
-
-		// If you are using Dependency Injection, you can delete the following constructor
-        public CommentsController() : this(new PostRepository(), new CommentRepository())
-        {
-        }
-
-        public CommentsController(IPostRepository postRepository, ICommentRepository commentRepository)
-        {
-			this.postRepository = postRepository;
-			this.commentRepository = commentRepository;
-        }
+        private UnitOfWork unitOfWork = new UnitOfWork();
 
         //
         // GET: /Comments/
 
         public ViewResult Index()
         {
-            return View(commentRepository.AllIncluding(comment => comment.Post));
+            return View(unitOfWork.CommentRepository.AllIncluding(comment => comment.Post));
         }
 
         //
@@ -36,7 +24,7 @@ namespace Blog.Controllers
 
         public ViewResult Details(System.Guid id)
         {
-            return View(commentRepository.Find(id));
+            return View(unitOfWork.CommentRepository.Find(id));
         }
 
         //
@@ -44,7 +32,7 @@ namespace Blog.Controllers
 
         public ActionResult Create()
         {
-			ViewBag.PossiblePosts = postRepository.All;
+            ViewBag.PossiblePosts = unitOfWork.PostRepository.All;
             return View();
         } 
 
@@ -55,11 +43,11 @@ namespace Blog.Controllers
         public ActionResult Create(Comment comment)
         {
             if (ModelState.IsValid) {
-                commentRepository.InsertOrUpdate(comment);
-                commentRepository.Save();
+                unitOfWork.CommentRepository.InsertOrUpdate(comment);
+                unitOfWork.CommentRepository.Save();
                 return RedirectToAction("Index");
             } else {
-				ViewBag.PossiblePosts = postRepository.All;
+                ViewBag.PossiblePosts = unitOfWork.PostRepository.All;
 				return View();
 			}
         }
@@ -69,8 +57,8 @@ namespace Blog.Controllers
  
         public ActionResult Edit(System.Guid id)
         {
-			ViewBag.PossiblePosts = postRepository.All;
-             return View(commentRepository.Find(id));
+            ViewBag.PossiblePosts = unitOfWork.PostRepository.All;
+            return View(unitOfWork.CommentRepository.Find(id));
         }
 
         //
@@ -80,11 +68,11 @@ namespace Blog.Controllers
         public ActionResult Edit(Comment comment)
         {
             if (ModelState.IsValid) {
-                commentRepository.InsertOrUpdate(comment);
-                commentRepository.Save();
+                unitOfWork.CommentRepository.InsertOrUpdate(comment);
+                unitOfWork.CommentRepository.Save();
                 return RedirectToAction("Index");
             } else {
-				ViewBag.PossiblePosts = postRepository.All;
+                ViewBag.PossiblePosts = unitOfWork.PostRepository.All;
 				return View();
 			}
         }
@@ -94,7 +82,7 @@ namespace Blog.Controllers
  
         public ActionResult Delete(System.Guid id)
         {
-            return View(commentRepository.Find(id));
+            return View(unitOfWork.CommentRepository.Find(id));
         }
 
         //
@@ -103,8 +91,8 @@ namespace Blog.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(System.Guid id)
         {
-            commentRepository.Delete(id);
-            commentRepository.Save();
+            unitOfWork.CommentRepository.Delete(id);
+            unitOfWork.CommentRepository.Save();
 
             return RedirectToAction("Index");
         }
@@ -112,8 +100,8 @@ namespace Blog.Controllers
         protected override void Dispose(bool disposing)
         {
             if (disposing) {
-                postRepository.Dispose();
-                commentRepository.Dispose();
+                unitOfWork.PostRepository.Dispose();
+                unitOfWork.CommentRepository.Dispose();
             }
             base.Dispose(disposing);
         }

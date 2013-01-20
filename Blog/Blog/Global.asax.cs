@@ -38,7 +38,7 @@ namespace Blog
             Database.SetInitializer(new DataContextInit());
 
             // Connection to DB and Test
-            using (var db = new BlogContext())
+            using (var db = new DataContext())
             {
                 var query = from post in db.Posts
                             select post;

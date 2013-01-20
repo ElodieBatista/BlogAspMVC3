@@ -1,4 +1,5 @@
 using Blog.Context;
+using Blog.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,11 +8,15 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 
-namespace Blog.Models
+namespace Blog.Repositories
 { 
     public class PersonalRepository : IPersonalRepository
     {
-        BlogContext context = new BlogContext();
+        private DataContext context;
+        public PersonalRepository(DataContext context)
+        {
+            this.context = context;
+        }
 
         public IQueryable<Personal> All
         {

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Blog.Context
 {
-    public class BlogContext : DbContext
+    public class DataContext : DbContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 

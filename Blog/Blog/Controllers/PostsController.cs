@@ -9,24 +9,14 @@ namespace Blog.Controllers
 {   
     public class PostsController : Controller
     {
-		private readonly IPostRepository postRepository;
-
-		// If you are using Dependency Injection, you can delete the following constructor
-        public PostsController() : this(new PostRepository())
-        {
-        }
-
-        public PostsController(IPostRepository postRepository)
-        {
-			this.postRepository = postRepository;
-        }
+        private UnitOfWork unitOfWork = new UnitOfWork();
 
         //
         // GET: /Posts/
 
         public ViewResult Index()
         {
-            return View(postRepository.AllIncluding(post => post.Comments));
+            return View(unitOfWork.PostRepository.AllIncluding(post => post.Comments));
         }
 
         //
@@ -34,7 +24,7 @@ namespace Blog.Controllers
 
         public ViewResult Details(System.Guid id)
         {
-            return View(postRepository.Find(id));
+            return View(unitOfWork.PostRepository.Find(id));
         }
 
         //
@@ -52,8 +42,8 @@ namespace Blog.Controllers
         public ActionResult Create(Post post)
         {
             if (ModelState.IsValid) {
-                postRepository.InsertOrUpdate(post);
-                postRepository.Save();
+                unitOfWork.PostRepository.InsertOrUpdate(post);
+                unitOfWork.PostRepository.Save();
                 return RedirectToAction("Index");
             } else {
 				return View();
@@ -65,7 +55,7 @@ namespace Blog.Controllers
  
         public ActionResult Edit(System.Guid id)
         {
-             return View(postRepository.Find(id));
+            return View(unitOfWork.PostRepository.Find(id));
         }
 
         //
@@ -75,8 +65,8 @@ namespace Blog.Controllers
         public ActionResult Edit(Post post)
         {
             if (ModelState.IsValid) {
-                postRepository.InsertOrUpdate(post);
-                postRepository.Save();
+                unitOfWork.PostRepository.InsertOrUpdate(post);
+                unitOfWork.PostRepository.Save();
                 return RedirectToAction("Index");
             } else {
 				return View();
@@ -88,7 +78,7 @@ namespace Blog.Controllers
  
         public ActionResult Delete(System.Guid id)
         {
-            return View(postRepository.Find(id));
+            return View(unitOfWork.PostRepository.Find(id));
         }
 
         //
@@ -97,8 +87,8 @@ namespace Blog.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(System.Guid id)
         {
-            postRepository.Delete(id);
-            postRepository.Save();
+            unitOfWork.PostRepository.Delete(id);
+            unitOfWork.PostRepository.Save();
 
             return RedirectToAction("Index");
         }
@@ -106,7 +96,7 @@ namespace Blog.Controllers
         protected override void Dispose(bool disposing)
         {
             if (disposing) {
-                postRepository.Dispose();
+                unitOfWork.PostRepository.Dispose();
             }
             base.Dispose(disposing);
         }

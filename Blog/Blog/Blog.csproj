@@ -113,13 +113,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Context\BlogContext.cs" />
+    <Compile Include="Context\DataContext.cs" />
     <Compile Include="Models\Comment.cs" />
-    <Compile Include="Models\CommentRepository.cs" />
+    <Compile Include="Repositories\CommentRepository.cs" />
     <Compile Include="Models\Personal.cs" />
-    <Compile Include="Models\PersonalRepository.cs" />
+    <Compile Include="Repositories\PersonalRepository.cs" />
     <Compile Include="Models\Post.cs" />
-    <Compile Include="Models\PostRepository.cs" />
+    <Compile Include="Repositories\PostRepository.cs" />
+    <Compile Include="Models\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Res.Designer.cs">
       <AutoGen>True</AutoGen>

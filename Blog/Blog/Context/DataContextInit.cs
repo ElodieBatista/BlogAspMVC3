@@ -7,10 +7,10 @@ using System.Web;
 
 namespace Blog.Context
 {
-    public class DataContextInit : DropCreateDatabaseIfModelChanges<BlogContext>
+    public class DataContextInit : DropCreateDatabaseIfModelChanges<DataContext>
     {
         // Put some informations in DB
-        protected override void Seed(BlogContext context)
+        protected override void Seed(DataContext context)
         {
             var myPersonal = new Personal
             {
