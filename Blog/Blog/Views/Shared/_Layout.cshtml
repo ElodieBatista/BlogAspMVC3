@@ -28,9 +28,9 @@
                         <li>@Html.ActionLink(Res.Home, "Index", "Home")</li>
                     }
 
-                    <li>@Html.ActionLink("Search", "Index", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "Index", "Home")</li>
+                    <li>@Html.Partial("_SelectLanguage")</li>
                     <li id="liLog">@Html.Partial("_LogOnPartial")</li>
                 </div>
             </ul>

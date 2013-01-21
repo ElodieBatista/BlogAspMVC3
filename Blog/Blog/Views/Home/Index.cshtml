@@ -5,7 +5,7 @@
 
 @foreach (var item in Model) {
     <article>
-        <a href="/Posts/Details/@item.Id">
+        <a href="@Url.Action("Details", "Posts", new { id = item.Id })">
             <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
         </a>
         <div class="clear"></div>
@@ -19,9 +19,9 @@
             ... @Html.ActionLink("[" + Res.More + "]", "../Posts/Details/" + item.Id)
         </div>
         <div class="infos">
-            @Res.Posted: <a href="/Posts/Details/@item.Id">@String.Format("{0: MMM d yyyy, HH:mm}", item.Posted)</a>
+            @Res.Posted: <a href="@Url.Action("Details", "Posts", new { id = item.Id })">@String.Format("{0: MMM d yyyy, HH:mm}", item.Posted)</a>
             |
-            <a href="/Posts/Details/@item.Id">@(item.Comments == null ? Res.None : item.Comments.Count.ToString()) @Res.Comments</a>
+            <a href="@Url.Action("Details", "Posts", new { id = item.Id })">@(item.Comments == null ? Res.None : item.Comments.Count.ToString()) @Res.Comments</a>
         </div>
     </article>
 }

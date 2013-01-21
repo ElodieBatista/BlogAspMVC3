@@ -25,7 +25,7 @@
         <td>@item.Name</td>
         <td>@item.Text</td>
         <td>@String.Format("{0:g}", item.Posted)</td>
-        <td><a href="../../Posts/Details/@item.PostId">@(item.Post == null ? Res.None : item.Post.Title)</a></td>
+        <td><a href="@Url.Action("Details", "Posts", new { id = item.PostId })">@(item.Post == null ? Res.None : item.Post.Title)</a></td>
     </tr>
 }
 

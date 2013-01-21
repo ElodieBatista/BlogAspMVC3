@@ -7,8 +7,8 @@ using Blog.Models;
 using Blog.ViewModel;
 
 namespace Blog.Controllers
-{   
-    public class PostsController : Controller
+{
+    public class PostsController : BaseController
     {
         private UnitOfWork unitOfWork = new UnitOfWork();
 

@@ -21,7 +21,7 @@
 
     @Res.Posted: <a href="">@String.Format("{0: MMM d yyyy, HH:mm}", Model.Post.Posted)</a>
     |
-    <a href="/Posts/Details/@Model.Post.Id">@(Model.Post.Comments == null ? Res.None : Model.Post.Comments.Count.ToString()) @Res.Comments</a>
+    <a href="@Url.Action("Details", "Posts", Model.Post.Id)">@(Model.Post.Comments == null ? Res.None : Model.Post.Comments.Count.ToString()) @Res.Comments</a>
     <br />
     <br />
 
@@ -51,13 +51,13 @@
 
 @if (ViewBag.HasOlder) {
     <div class="previous">
-        <a href="/Posts/Details/@Model.PostOlder.Id"><< @Model.PostOlder.Title</a>
+        <a href="@Url.Action("Details", "Posts", new { id = Model.PostOlder.Id })"><< @Model.PostOlder.Title</a>
     </div>
 }
 
 @if (ViewBag.HasRecent) {
     <div class="next">
-        <a href="/Posts/Details/@Model.PostRecent.Id">@Model.PostRecent.Title>></a>
+        <a href="@Url.Action("Details", "Posts", new { id = Model.PostRecent.Id })">@Model.PostRecent.Title>></a>
     </div>
 }
 
@@ -70,7 +70,7 @@
         @item.Text
         <br />
         <br />
-        @Res.Posted: <a href="/Posts/Details/@Model.Post.Id">@String.Format("{0: MMM d yyyy, HH:mm}", item.Posted)</a><br />
+        @Res.Posted: <a href="@Url.Action("Details", "Posts", new { id = Model.Post.Id })">@String.Format("{0: MMM d yyyy, HH:mm}", item.Posted)</a><br />
         <br />
     </div>
 }

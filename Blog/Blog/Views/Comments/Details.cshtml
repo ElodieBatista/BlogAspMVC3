@@ -14,7 +14,7 @@
     <br />
     <br />
 
-    @Res.Post: <a href="../../Posts/Details/@Model.Post.Id">@Model.Post.Title</a>
+    @Res.Post: <a href="@Url.Action("Details", "Posts", new { id = Model.Post.Id })">@Model.Post.Title</a>
     <br />
     <br />
 </div>

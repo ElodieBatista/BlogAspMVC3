@@ -12,9 +12,9 @@
     <div class="text">@Model.Text</div>
     <br />
 
-    @Res.Posted: <a href="../Details/@Model.Id">@String.Format("{0:g}", Model.Posted)</a>
+    @Res.Posted: <a href="@Url.Action("Details", "Posts", new { id = Model.Id })">@String.Format("{0:g}", Model.Posted)</a>
     |
-    <a href="../Details/@Model.Id">@(Model.Comments == null ? "None" : Model.Comments.Count.ToString()) @Res.Comments</a>
+    <a href="@Url.Action("Details", "Posts", new { id = Model.Id })">@(Model.Comments == null ? Res.None : Model.Comments.Count.ToString()) @Res.Comments</a>
 </article>
 
 @using (Html.BeginForm()) {

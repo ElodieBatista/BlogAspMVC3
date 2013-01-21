@@ -8,7 +8,7 @@ using Blog.Models;
 namespace Blog.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class PersonalsController : Controller
+    public class PersonalsController : BaseController
     {
         private UnitOfWork unitOfWork = new UnitOfWork();
 

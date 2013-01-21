@@ -8,7 +8,7 @@ using Blog.ViewModel;
 
 namespace Blog.Controllers
 {   
-    public class CommentsController : Controller
+    public class CommentsController : BaseController
     {
         private UnitOfWork unitOfWork = new UnitOfWork();
 

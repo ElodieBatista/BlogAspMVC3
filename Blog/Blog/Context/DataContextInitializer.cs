@@ -8,7 +8,7 @@ using System.Web.Security;
 
 namespace CodeFirstMembershipSharp
 {
-    public class DataContextInitializer: DropCreateDatabaseAlways<DataContext>
+    public class DataContextInitializer: DropCreateDatabaseIfModelChanges<DataContext>
     {
         // Put some informations in DB
         protected override void Seed(DataContext context)

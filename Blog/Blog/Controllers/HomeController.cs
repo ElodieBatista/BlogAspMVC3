@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Blog.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private UnitOfWork unitOfWork = new UnitOfWork();
 
