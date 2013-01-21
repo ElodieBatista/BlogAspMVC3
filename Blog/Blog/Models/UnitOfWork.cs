@@ -1,5 +1,5 @@
-﻿using Blog.Context;
-using Blog.Repositories;
+﻿using Blog.Repositories;
+using CodeFirstMembershipSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Blog.Models
 {
-    public class UnitOfWork: IDisposable
+    public class UnitOfWork : IDisposable
     {
         private DataContext context = new DataContext();
         private PostRepository postRepository;

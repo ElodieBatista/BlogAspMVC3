@@ -1,0 +1,7 @@
+﻿@using Blog.Resources
+@if (Request.IsAuthenticated) {
+    <text>@User.Identity.Name
+    [ @Html.ActionLink(Res.LogOff, "LogOff", "Account") ]</text>
+} else {
+    @:[ @Html.ActionLink(Res.LogOn, "LogOn", "Account") ]
+}

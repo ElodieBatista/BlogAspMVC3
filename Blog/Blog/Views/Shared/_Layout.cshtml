@@ -1,4 +1,6 @@
 ﻿@using Blog.Resources
+@using CodeFirstMembershipSharp
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,10 +16,22 @@
         <nav>
             <ul id="menu">
                 <div id="lis">
-                    <li>@Html.ActionLink(Res.Home, "Index", "Home")</li>
-                    <li>@Html.ActionLink(Res.Posts, "Index", "Posts")</li>
-                    <li>@Html.ActionLink(Res.Comments, "Index", "Comments")</li>
-                    <li>@Html.ActionLink(Res.Personal, "Index", "Personals")</li>
+                    @if (WebSecurity.IsAuthenticated) {
+                        <li>@Html.ActionLink(Res.Home, "Index", "Home")</li>
+                        <li>@Html.ActionLink(Res.Posts, "Index", "Posts")</li>
+                        <li>@Html.ActionLink(Res.Comments, "Index", "Comments")</li>
+                        <li>@Html.ActionLink(Res.Personal, "Index", "Personals")</li>
+                    } else {
+                        <li> </li>
+                        <li> </li>
+                        <li> </li>
+                        <li>@Html.ActionLink(Res.Home, "Index", "Home")</li>
+                    }
+
+                    <li>@Html.ActionLink("Search", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "Index", "Home")</li>
+                    <li id="liLog">@Html.Partial("_LogOnPartial")</li>
                 </div>
             </ul>
         </nav>

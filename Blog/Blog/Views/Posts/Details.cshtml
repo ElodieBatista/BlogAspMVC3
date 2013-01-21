@@ -1,14 +1,17 @@
 @model Blog.ViewModel.DetailsPostViewModel
 @using Blog.Resources
+@using CodeFirstMembershipSharp
 
 @{ViewBag.Title += " - " + Model.Post.Title;}
 
 <article>
-   <h3>@Model.Post.Title</h3>
+    <h3>@Model.Post.Title</h3>
 
-   <div class="modifications">
-       @Html.ActionLink(Res.Edit, "Edit", new { id=Model.Post.Id })
-   </div>
+    @if(WebSecurity.IsAuthenticated) {
+        <div class="modifications">
+            @Html.ActionLink(Res.Edit, "Edit", new { id=Model.Post.Id })
+        </div>
+    }
    
     <div class="clear"></div>
 

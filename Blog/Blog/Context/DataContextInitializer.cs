@@ -4,14 +4,39 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 
-namespace Blog.Context
+namespace CodeFirstMembershipSharp
 {
-    public class DataContextInit : DropCreateDatabaseAlways<DataContext>
+    public class DataContextInitializer: DropCreateDatabaseAlways<DataContext>
     {
         // Put some informations in DB
         protected override void Seed(DataContext context)
         {
+            //MembershipCreateStatus Status;
+            //Membership.CreateUser("Admin", "123456", "admin@sup.com", null, null, true, out Status);
+            Roles.CreateRole("Admin");
+            Roles.AddUserToRole("Admin", "Admin");
+
+            var myUser = new User
+            {
+                UserId = Guid.NewGuid(),
+                LastName = "Admin",
+                FirstName = "Admin",
+                Email = "admin@blog.com",
+                Password = "123456",
+                Username = "admin",
+                IsApproved = true
+            };            
+
+            context.Users.Add(myUser);
+
+            // SAVE
+            context.SaveChanges();
+
+            // Add User to Role Admin
+            Roles.AddUserToRole(myUser.Username, "Admin");
+
             var myPersonal = new Personal
             {
                 Firstname = "Jon",

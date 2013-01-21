@@ -14,7 +14,7 @@ namespace Blog.Controllers
 
         //
         // GET: /Posts/
-
+        [Authorize(Roles = "Admin")]
         public ViewResult Index(int? page)
         {
             // 10 posts per page
@@ -123,7 +123,7 @@ namespace Blog.Controllers
 
         //
         // GET: /Posts/Create
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             // Post instanciation with date pre-filled
@@ -135,7 +135,7 @@ namespace Blog.Controllers
 
         //
         // POST: /Posts/Create
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Create(Post post)
         {
@@ -152,7 +152,7 @@ namespace Blog.Controllers
         
         //
         // GET: /Posts/Edit/5
- 
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(System.Guid id)
         {
             return View(unitOfWork.PostRepository.Find(id));
@@ -160,7 +160,7 @@ namespace Blog.Controllers
 
         //
         // POST: /Posts/Edit/5
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Edit(Post post)
         {
@@ -175,7 +175,7 @@ namespace Blog.Controllers
 
         //
         // GET: /Posts/Delete/5
- 
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(System.Guid id)
         {
             return View(unitOfWork.PostRepository.Find(id));
@@ -183,7 +183,7 @@ namespace Blog.Controllers
 
         //
         // POST: /Posts/Delete/5
-
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(System.Guid id)
         {

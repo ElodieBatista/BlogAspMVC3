@@ -1,5 +1,5 @@
-using Blog.Context;
 using Blog.Models;
+using CodeFirstMembershipSharp;
 using System;
 using System.Collections.Generic;
 using System.Data;

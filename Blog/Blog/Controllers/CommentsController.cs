@@ -14,7 +14,7 @@ namespace Blog.Controllers
 
         //
         // GET: /Comments/
-
+        [Authorize(Roles = "Admin")]
         public ViewResult Index(int? page)
         {
             // 20 comments per page
@@ -61,7 +61,7 @@ namespace Blog.Controllers
 
         //
         // GET: /Comments/Details/5
-
+        [Authorize(Roles = "Admin")]
         public ViewResult Details(System.Guid id)
         {
             // Get the Comment with its Post
@@ -123,7 +123,7 @@ namespace Blog.Controllers
 
         //
         // GET: /Comments/Delete/5
- 
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(System.Guid id)
         {
             // Get the Comment with its Post
@@ -135,7 +135,7 @@ namespace Blog.Controllers
 
         //
         // POST: /Comments/Delete/5
-
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(System.Guid id)
         {

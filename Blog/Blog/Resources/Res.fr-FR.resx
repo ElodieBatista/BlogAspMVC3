@@ -126,6 +126,18 @@
   <data name="BlogOf" xml:space="preserve">
     <value>Blog de </value>
   </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Changer le mot de passe</value>
+  </data>
+  <data name="ChangePasswordErrorMessage" xml:space="preserve">
+    <value>Erreur de changement de mot de passe. Corrigez les erreurs et réessayez.</value>
+  </data>
+  <data name="ChangePasswordSuccessMessage" xml:space="preserve">
+    <value>Votre mot de passe a été modifié.</value>
+  </data>
+  <data name="Characters" xml:space="preserve">
+    <value>caractères</value>
+  </data>
   <data name="Comment" xml:space="preserve">
     <value>Commentaire</value>
   </data>
@@ -180,8 +192,32 @@
   <data name="Home" xml:space="preserve">
     <value>Accueil</value>
   </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>L'email est incorrect.</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>Le mot de passe est incorrect.</value>
+  </data>
+  <data name="InvalidUsername" xml:space="preserve">
+    <value>Le nom d'utilisateur est incorrect.</value>
+  </data>
   <data name="Lastname" xml:space="preserve">
     <value>Nom</value>
+  </data>
+  <data name="LoginErrorMessage" xml:space="preserve">
+    <value>La connexion a échoué. Corrigez les erreurs et réessayez.</value>
+  </data>
+  <data name="LoginMessage" xml:space="preserve">
+    <value>Entrez votre nom d'utilisateur et votre mot de passe</value>
+  </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>Déconnexion</value>
+  </data>
+  <data name="LogOn" xml:space="preserve">
+    <value>Connexion</value>
+  </data>
+  <data name="Minimum" xml:space="preserve">
+    <value>Minimum</value>
   </data>
   <data name="More" xml:space="preserve">
     <value>Plus</value>
@@ -251,5 +287,8 @@
   </data>
   <data name="Tweet" xml:space="preserve">
     <value>Tweeter</value>
+  </data>
+  <data name="InvalidLogin" xml:space="preserve">
+    <value>Le nom d'utilisateur ou le mot de passe est incorrect.</value>
   </data>
 </root>

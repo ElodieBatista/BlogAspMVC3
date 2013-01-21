@@ -1,5 +1,5 @@
 ﻿using Blog.Common;
-using Blog.Context;
+using CodeFirstMembershipSharp;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -39,7 +39,7 @@ namespace Blog
         protected void Application_Start()
         {
             // Create DB
-            Database.SetInitializer(new DataContextInit());
+            Database.SetInitializer(new DataContextInitializer());
 
             // Connection to DB and Test
             using (var db = new DataContext())

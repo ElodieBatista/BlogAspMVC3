@@ -17,7 +17,7 @@ namespace Blog.Common
             var personalRepo = unitOfWork.PersonalRepository;
 
             // Get all Personal information & fill ViewBag
-            Personal myPersonal = personalRepo.All.First();
+            Personal myPersonal = personalRepo.All.FirstOrDefault();
             filterContext.Controller.ViewBag.PersonalFirstName = myPersonal.Firstname;
             filterContext.Controller.ViewBag.PersonalLastName = myPersonal.Lastname;
             filterContext.Controller.ViewBag.PersonalTitle = myPersonal.Title;

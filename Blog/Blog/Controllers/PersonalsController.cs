@@ -6,7 +6,8 @@ using System.Web.Mvc;
 using Blog.Models;
 
 namespace Blog.Controllers
-{   
+{
+    [Authorize(Roles = "Admin")]
     public class PersonalsController : Controller
     {
         private UnitOfWork unitOfWork = new UnitOfWork();
