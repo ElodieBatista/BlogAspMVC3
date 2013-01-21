@@ -1,26 +1,22 @@
 @model Blog.Models.Post
+@using Blog.Resources
 
-@{
-    ViewBag.Title = "Create";
-}
-
-<h2>Create</h2>
+@{ViewBag.Title += " - " + Res.CreatingPost;}
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Post</legend>
+    <article>
+        <h3>@Res.NewPost</h3>
+        <div class="clear"></div>
 
 		@Html.Partial("_CreateOrEdit", Model)
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="@Res.Create" />
         </p>
-    </fieldset>
+    </article>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(Res.Back, "Index")
 </div>
-
-

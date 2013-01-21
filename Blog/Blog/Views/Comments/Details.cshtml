@@ -1,29 +1,24 @@
-@model Blog.Models.Comment
+﻿@model Blog.Models.Comment
+@using Blog.Resources
 
-@{
-    ViewBag.Title = "Details";
-}
+@{ViewBag.Title += " - " + Res.CommentDetails;}
 
-<h2>Details</h2>
+<div class="comment">
+    <h6>@Model.Name </h6>
 
-<fieldset>
-    <legend>Comment</legend>
+    @Model.Text
+    <br />
+    <br />
 
-    <div class="display-label">Name</div>
-    <div class="display-field">@Model.Name</div>
+    @Res.Posted: @String.Format("{0:g}", Model.Posted)
+    <br />
+    <br />
 
-    <div class="display-label">Text</div>
-    <div class="display-field">@Model.Text</div>
-
-    <div class="display-label">Posted</div>
-    <div class="display-field">@String.Format("{0:g}", Model.Posted)</div>
-
-    <div class="display-label">Post</div>
-    <div class="display-field">@(Model.Post == null ? "None" : Model.Post.Title)</div>
-</fieldset>
+    @Res.Post: <a href="../../Posts/Details/@Model.Post.Id">@Model.Post.Title</a>
+    <br />
+    <br />
+</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(Res.Delete, "Delete", new { id = Model.Id }) |
+    @Html.ActionLink(Res.Back, "Index")
 </p>
-
-

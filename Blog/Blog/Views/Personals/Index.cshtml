@@ -1,53 +1,22 @@
 @model IEnumerable<Blog.Models.Personal>
+@using Blog.Resources
 
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th></th>
-        <th>
-            Firstname
-        </th>
-        <th>
-            Lastname
-        </th>
-        <th>
-            Title
-        </th>
-        <th>
-            Description
-        </th>
-    </tr>
+@{ViewBag.Title += " - " + Res.Personal;}
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-        <td>
-			@item.Firstname
-        </td>
-        <td>
-			@item.Lastname
-        </td>
-        <td>
-			@item.Title
-        </td>
-        <td>
-			@item.Description
-        </td>
-    </tr>
+    <article>
+        <h3>@item.Firstname @item.Lastname</h3>
+
+        <div class="modifications">
+            @Html.ActionLink(Res.Edit, "Edit", new { id=item.Id }) 
+    
+            @Html.ActionLink(Res.Details, "Details", new { id=item.Id })
+        </div>
+        <div class="clear"></div>
+
+        <span class="bold">@Res.Title:</span> @item.Title
+        <br />
+        <br />
+	    <span class="bold">@Res.Description:</span> @item.Description
+    </article>
 }
-
-</table>
-
-

@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
+    <Compile Include="Common\PutDataActionFilter.cs" />
     <Compile Include="Context\DataContextInit.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -127,6 +128,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Res.resx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\Comment\CreateCommentViewModel.cs" />
+    <Compile Include="ViewModel\Post\DetailsPostViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -185,6 +188,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\themes\base\fonts\BRITANIC.TTF" />
+    <Content Include="Content\themes\base\fonts\FRAMDCN.TTF" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -217,21 +222,16 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Comments\Create.cshtml" />
-    <Content Include="Views\Comments\Edit.cshtml" />
     <Content Include="Views\Comments\Delete.cshtml" />
     <Content Include="Views\Comments\Details.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
-    <Content Include="Views\Comments\_CreateOrEdit.cshtml" />
-    <Content Include="Views\Personals\Create.cshtml" />
-    <Content Include="Views\Personals\Edit.cshtml" />
-    <Content Include="Views\Personals\Delete.cshtml" />
     <Content Include="Views\Personals\Details.cshtml" />
+    <Content Include="Views\Personals\Edit.cshtml" />
     <Content Include="Views\Personals\Index.cshtml" />
-    <Content Include="Views\Personals\_CreateOrEdit.cshtml" />
     <Content Include="Views\Posts\Create.cshtml" />
-    <Content Include="Views\Posts\Edit.cshtml" />
     <Content Include="Views\Posts\Delete.cshtml" />
     <Content Include="Views\Posts\Details.cshtml" />
+    <Content Include="Views\Posts\Edit.cshtml" />
     <Content Include="Views\Posts\Index.cshtml" />
     <Content Include="Views\Posts\_CreateOrEdit.cshtml" />
   </ItemGroup>
@@ -245,8 +245,11 @@
     <EmbeddedResource Include="Resources\Res.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Res.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Res.fr-FR.resx" />
+    <EmbeddedResource Include="Resources\Res.fr-FR.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

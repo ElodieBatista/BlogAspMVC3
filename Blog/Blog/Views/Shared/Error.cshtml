@@ -1,15 +1,16 @@
 ﻿@{
     Layout = null;
 }
+@using Blog.Resources
 
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Error</title>
-</head>
-<body>
-    <h2>
-        Sorry, an error occurred while processing your request.
-    </h2>
-</body>
+    <head>
+        <title>@Res.Error</title>
+    </head>
+    <body>
+        <h2>
+            @Res.ErrorMessage
+        </h2>
+    </body>
 </html>

@@ -117,23 +117,110 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddComment" xml:space="preserve">
+    <value>Add a comment</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="BlogOf" xml:space="preserve">
+    <value>Blog of </value>
+  </data>
   <data name="Comment" xml:space="preserve">
-    <value>Enter your comment</value>
+    <value>Comment</value>
+  </data>
+  <data name="CommentDetails" xml:space="preserve">
+    <value>Comment Details</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="ConfirmDeleteComment" xml:space="preserve">
+    <value>Are you sure you want to delete this comment?</value>
+  </data>
+  <data name="ConfirmDeletePost" xml:space="preserve">
+    <value>Are you sure you want to delete this post?</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="CopyRight" xml:space="preserve">
+    <value>2012 All rights reserved | Web site developped by </value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="CreatingPost" xml:space="preserve">
+    <value>Creating a new post</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DeleteComment" xml:space="preserve">
+    <value>Delete a comment</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>Sorry, an error occurred while processing your request.</value>
+  </data>
   <data name="Firstname" xml:space="preserve">
     <value>Firstname</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
   </data>
   <data name="Lastname" xml:space="preserve">
     <value>Lastname</value>
   </data>
+  <data name="More" xml:space="preserve">
+    <value>More</value>
+  </data>
   <data name="Name" xml:space="preserve">
-    <value>Enter your name</value>
+    <value>Name</value>
+  </data>
+  <data name="NewComment" xml:space="preserve">
+    <value>Create a new comment</value>
+  </data>
+  <data name="NewPost" xml:space="preserve">
+    <value>Create a New Post</value>
+  </data>
+  <data name="NextComments" xml:space="preserve">
+    <value>Commentaires suivants</value>
+  </data>
+  <data name="NextPosts" xml:space="preserve">
+    <value>Next posts</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Personal" xml:space="preserve">
+    <value>Personal</value>
   </data>
   <data name="Post" xml:space="preserve">
-    <value>You post here</value>
+    <value>Post</value>
+  </data>
+  <data name="Posted" xml:space="preserve">
+    <value>Posted</value>
+  </data>
+  <data name="Posts" xml:space="preserve">
+    <value>Posts</value>
+  </data>
+  <data name="PreviousComments" xml:space="preserve">
+    <value>Previous comments</value>
+  </data>
+  <data name="PreviousPosts" xml:space="preserve">
+    <value>Previous posts</value>
   </data>
   <data name="RequiredComment" xml:space="preserve">
     <value>Your comment is required</value>
@@ -142,10 +229,10 @@
     <value>Your description is required</value>
   </data>
   <data name="RequiredFirstName" xml:space="preserve">
-    <value>Your Firstname is required</value>
+    <value>Your firstname is required</value>
   </data>
   <data name="RequiredLastName" xml:space="preserve">
-    <value>Your Lastname is required</value>
+    <value>Your lastname is required</value>
   </data>
   <data name="RequiredName" xml:space="preserve">
     <value>Your name is required</value>
@@ -156,7 +243,13 @@
   <data name="RequiredTitle" xml:space="preserve">
     <value>Title is required</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
   <data name="Title" xml:space="preserve">
     <value>Title</value>
+  </data>
+  <data name="Tweet" xml:space="preserve">
+    <value>Tweet</value>
   </data>
 </root>

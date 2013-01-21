@@ -1,5 +1,47 @@
-﻿@{
-    ViewBag.Title = "Index";
+﻿@model IEnumerable<Blog.Models.Post>
+@using Blog.Resources
+
+@{ViewBag.Title += " - " + Res.Home;}
+
+@foreach (var item in Model) {
+    <article>
+        <a href="/Posts/Details/@item.Id">
+            <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+        </a>
+        <div class="clear"></div>
+
+        <div class="text">
+            @if(item.Text.Length <= 300) {
+                @item.Text
+            } else {
+                @item.Text.Substring(0, 300)
+            }
+            ... @Html.ActionLink("[" + Res.More + "]", "../Posts/Details/" + item.Id)
+        </div>
+        <div class="infos">
+            @Res.Posted: <a href="/Posts/Details/@item.Id">@String.Format("{0: MMM d yyyy, HH:mm}", item.Posted)</a>
+            |
+            <a href="/Posts/Details/@item.Id">@(item.Comments == null ? Res.None : item.Comments.Count.ToString()) @Res.Comments</a>
+        </div>
+    </article>
 }
 
-<h2>Index</h2>
+@{if (ViewBag.HasPrevious) {
+    <div class="previous">
+      @Html.ActionLink("<< " + Res.PreviousPosts, "Index", new { page = (ViewBag.PreviousPage) })
+    </div>
+  }
+}
+     
+@{if (ViewBag.HasMore) {
+        if (ViewBag.CurrentPage == 2) {
+          <div class="next">
+              @Html.ActionLink(Res.NextPosts + " >>", "Index")
+          </div>
+        } else {
+          <div class="next">
+              @Html.ActionLink(Res.NextPosts + " >>", "Index", new { page = (ViewBag.FuturPage) })
+          </div>
+        }
+    }
+}

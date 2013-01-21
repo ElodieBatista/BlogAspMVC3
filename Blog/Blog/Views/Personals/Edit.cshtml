@@ -1,25 +1,55 @@
 @model Blog.Models.Personal
+@using Blog.Resources
 
-@{
-    ViewBag.Title = "Edit";
-}
-
-<h2>Edit</h2>
+@{ViewBag.Title += " - " + Res.Edit;}
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Personal</legend>
+    <article>
+        <h3>@Res.Edit @Model.Firstname @Model.Lastname</h3>
+
+        <div class="clear"></div>
 
         @Html.HiddenFor(model => model.Id)
-		@Html.Partial("_CreateOrEdit", Model)
+
+		<div class="editor-label">
+            @Html.LabelFor(model => model.Firstname)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Firstname)
+            @Html.ValidationMessageFor(model => model.Firstname)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Lastname)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Lastname)
+            @Html.ValidationMessageFor(model => model.Lastname)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="@Res.Save" />
         </p>
-    </fieldset>
+    </article>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(Res.Back, "Index")
 </div>

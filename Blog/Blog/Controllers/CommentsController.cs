@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Blog.Models;
+using Blog.ViewModel;
 
 namespace Blog.Controllers
 {   
@@ -14,9 +15,48 @@ namespace Blog.Controllers
         //
         // GET: /Comments/
 
-        public ViewResult Index()
+        public ViewResult Index(int? page)
         {
-            return View(unitOfWork.CommentRepository.AllIncluding(comment => comment.Post));
+            // 20 comments per page
+            const int pageSize = 20;
+
+            // Get all comments ordered by date
+            var commentsList = unitOfWork.CommentRepository
+                                            .AllIncluding(comment => comment.Post)
+                                            .OrderByDescending(comment => comment.Posted);
+
+            // Number of comments found
+            int commentCount = commentsList.Count();
+
+            // Offset wanted
+            int skip = ((page ?? 0) * pageSize);
+            if (skip > 0)
+                skip -= pageSize;
+
+            // Get 20 comments from the offset
+            var twentyComments = commentsList.Skip(skip).Take(pageSize).ToList();
+
+            ViewBag.CurrentPage = (page ?? 0);
+
+            // If there are more older
+            ViewBag.HasPrevious = (skip + pageSize < commentCount);
+
+            // If there are more younger
+            ViewBag.HasMore = (skip > 0);
+
+            // If current page is 0
+            if (ViewBag.CurrentPage == 0) {
+                // Page 2
+                ViewBag.PreviousPage = (ViewBag.CurrentPage - 1) * (-1) + 1;
+            } else {
+                // Previous Page with previous posts
+                ViewBag.PreviousPage = (ViewBag.CurrentPage + 1);
+
+                // Next Page with recent posts
+                ViewBag.FuturPage = (ViewBag.CurrentPage - 1);
+            }
+
+            return View(twentyComments);
         }
 
         //
@@ -24,7 +64,11 @@ namespace Blog.Controllers
 
         public ViewResult Details(System.Guid id)
         {
-            return View(unitOfWork.CommentRepository.Find(id));
+            // Get the Comment with its Post
+            return View(unitOfWork.CommentRepository
+                                    .AllIncluding(comment => comment.Post)
+                                    .Where(comment => comment.Id == id)
+                                    .First());
         }
 
         //
@@ -32,49 +76,49 @@ namespace Blog.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.PossiblePosts = unitOfWork.PostRepository.All;
-            return View();
+            var vm = new CreateCommentViewModel();
+
+            // Dropdown list to choose the Post for this Comment
+            vm.CreateEntire = true;
+            vm.PossiblePosts = unitOfWork.PostRepository
+                                            .All
+                                            .ToList();
+
+            // Comment for the form
+            vm.Comment = new Comment();
+            vm.Comment.Posted = DateTime.Now;
+            vm.Comment.Post = new Post();
+            
+            return View(vm);
         } 
 
         //
         // POST: /Comments/Create
 
         [HttpPost]
-        public ActionResult Create(Comment comment)
+        public ActionResult Create(CreateCommentViewModel vm)
         {
             if (ModelState.IsValid) {
-                unitOfWork.CommentRepository.InsertOrUpdate(comment);
+                vm.Comment.Posted = DateTime.Now;
+                unitOfWork.CommentRepository.InsertOrUpdate(vm.Comment);
                 unitOfWork.CommentRepository.Save();
-                return RedirectToAction("Index");
-            } else {
-                ViewBag.PossiblePosts = unitOfWork.PostRepository.All;
-				return View();
-			}
-        }
-        
-        //
-        // GET: /Comments/Edit/5
- 
-        public ActionResult Edit(System.Guid id)
-        {
-            ViewBag.PossiblePosts = unitOfWork.PostRepository.All;
-            return View(unitOfWork.CommentRepository.Find(id));
-        }
+                string url = "/../Posts/Details/" + vm.Comment.PostId;
 
-        //
-        // POST: /Comments/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(Comment comment)
-        {
-            if (ModelState.IsValid) {
-                unitOfWork.CommentRepository.InsertOrUpdate(comment);
-                unitOfWork.CommentRepository.Save();
-                return RedirectToAction("Index");
+                return RedirectToAction(url);
             } else {
-                ViewBag.PossiblePosts = unitOfWork.PostRepository.All;
-				return View();
-			}
+                // Dropdown list to choose the Post for this Comment
+                vm.CreateEntire = true;
+                vm.PossiblePosts = unitOfWork.PostRepository
+                                                .All
+                                                .ToList();
+
+                // Comment for the form
+                vm.Comment = new Comment();
+                vm.Comment.Posted = DateTime.Now;
+                vm.Comment.Post = new Post();
+
+                return View(vm);
+            }
         }
 
         //
@@ -82,7 +126,11 @@ namespace Blog.Controllers
  
         public ActionResult Delete(System.Guid id)
         {
-            return View(unitOfWork.CommentRepository.Find(id));
+            // Get the Comment with its Post
+            return View(unitOfWork.CommentRepository
+                                    .AllIncluding(comment => comment.Post)
+                                    .Where(comment => comment.Id == id)
+                                    .First());
         }
 
         //
@@ -107,4 +155,3 @@ namespace Blog.Controllers
         }
     }
 }
-

@@ -1,4 +1,5 @@
-﻿using Blog.Context;
+﻿using Blog.Common;
+using Blog.Context;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -18,6 +19,9 @@ namespace Blog
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+
+            // Register our custom Filter
+            filters.Add(new PutDataActionFilter());
         }
 
         public static void RegisterRoutes(RouteCollection routes)

@@ -26,29 +26,6 @@ namespace Blog.Controllers
         {
             return View(unitOfWork.PersonalRepository.Find(id));
         }
-
-        //
-        // GET: /Personals/Create
-
-        public ActionResult Create()
-        {
-            return View();
-        } 
-
-        //
-        // POST: /Personals/Create
-
-        [HttpPost]
-        public ActionResult Create(Personal personal)
-        {
-            if (ModelState.IsValid) {
-                unitOfWork.PersonalRepository.InsertOrUpdate(personal);
-                unitOfWork.PersonalRepository.Save();
-                return RedirectToAction("Index");
-            } else {
-				return View();
-			}
-        }
         
         //
         // GET: /Personals/Edit/5
@@ -73,26 +50,6 @@ namespace Blog.Controllers
 			}
         }
 
-        //
-        // GET: /Personals/Delete/5
- 
-        public ActionResult Delete(System.Guid id)
-        {
-            return View(unitOfWork.PersonalRepository.Find(id));
-        }
-
-        //
-        // POST: /Personals/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(System.Guid id)
-        {
-            unitOfWork.PersonalRepository.Delete(id);
-            unitOfWork.PersonalRepository.Save();
-
-            return RedirectToAction("Index");
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing) {
@@ -102,4 +59,3 @@ namespace Blog.Controllers
         }
     }
 }
-

@@ -1,29 +1,75 @@
-@model Blog.Models.Post
+@model Blog.ViewModel.DetailsPostViewModel
+@using Blog.Resources
 
-@{
-    ViewBag.Title = "Details";
+@{ViewBag.Title += " - " + Model.Post.Title;}
+
+<article>
+   <h3>@Model.Post.Title</h3>
+
+   <div class="modifications">
+       @Html.ActionLink(Res.Edit, "Edit", new { id=Model.Post.Id })
+   </div>
+   
+    <div class="clear"></div>
+
+    <div class="text">
+        @Model.Post.Text
+    </div>
+
+    @Res.Posted: <a href="">@String.Format("{0: MMM d yyyy, HH:mm}", Model.Post.Posted)</a>
+    |
+    <a href="/Posts/Details/@Model.Post.Id">@(Model.Post.Comments == null ? Res.None : Model.Post.Comments.Count.ToString()) @Res.Comments</a>
+    <br />
+    <br />
+
+        <!-- FACEBOOK -->
+        <iframe src="@ViewBag.UrlToLike" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:400px; height:25px;" allowTransparency="true"></iframe>
+        
+
+        <!-- TWITTER -->
+        <a href="https://twitter.com/share" class="twitter-share-button" data-lang="fr" data-count="none">@Res.Tweet</a>&nbsp&nbsp&nbsp&nbsp&nbsp
+        <script>
+            !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");
+        </script>
+
+        <!-- GOOGLE PLUS -->
+        <g:plusone></g:plusone>
+        <script type="text/javascript">
+            window.___gcfg = { lang: 'fr' };
+            (function () {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/plusone.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
+        </script>
+    <div class="clear"></div>
+</article>
+
+
+@if (ViewBag.HasOlder) {
+    <div class="previous">
+        <a href="/Posts/Details/@Model.PostOlder.Id"><< @Model.PostOlder.Title</a>
+    </div>
 }
 
-<h2>Details</h2>
+@if (ViewBag.HasRecent) {
+    <div class="next">
+        <a href="/Posts/Details/@Model.PostRecent.Id">@Model.PostRecent.Title>></a>
+    </div>
+}
 
-<fieldset>
-    <legend>Post</legend>
+<div class="clear"></div>
 
-    <div class="display-label">Title</div>
-    <div class="display-field">@Model.Title</div>
+@foreach (var item in Model.Post.Comments) {
+    <div class="comment">
+        <h6>@item.Name</h6>
+    
+        @item.Text
+        <br />
+        <br />
+        @Res.Posted: <a href="/Posts/Details/@Model.Post.Id">@String.Format("{0: MMM d yyyy, HH:mm}", item.Posted)</a><br />
+        <br />
+    </div>
+}
 
-    <div class="display-label">Text</div>
-    <div class="display-field">@Model.Text</div>
-
-    <div class="display-label">Posted</div>
-    <div class="display-field">@String.Format("{0:g}", Model.Posted)</div>
-
-    <div class="display-label">Comments</div>
-    <div class="display-field">@(Model.Comments == null ? "None" : Model.Comments.Count.ToString())</div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
-
-
+@Html.Partial("../Comments/Create", Model.VMCreateComment)

@@ -1,32 +1,25 @@
 @model Blog.Models.Comment
+@using Blog.Resources
 
-@{
-    ViewBag.Title = "Delete";
-}
+@{ViewBag.Title += " - " + Res.DeleteComment;}
 
-<h2>Delete</h2>
+<h2>@Res.ConfirmDeleteComment</h2>
+<div class="comment">
+    <h6>@Model.Name</h6>
 
-<h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>Comment</legend>
+    <div class="text">@Model.Text</div>
 
-    <div class="display-label">Name</div>
-    <div class="display-field">@Model.Name</div>
+    @Res.Posted: <a href="../Details/@Model.Id">@String.Format("{0:g}", Model.Posted)</a>
+    <br />
+    <br />
+    @Res.Post: <a href="../../Posts/Details/@Model.Post.Id">@(Model.Post.Title == null ? "None" : Model.Post.Title)</a>
+    <br />
+    <br />
+</div>
 
-    <div class="display-label">Text</div>
-    <div class="display-field">@Model.Text</div>
-
-    <div class="display-label">Posted</div>
-    <div class="display-field">@String.Format("{0:g}", Model.Posted)</div>
-
-    <div class="display-label">Post</div>
-    <div class="display-field">@(Model.Post == null ? "None" : Model.Post.Title)</div>
-</fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        <input type="submit" value="@Res.Delete" /> |
+        @Html.ActionLink(Res.Back, "Index")
     </p>
 }
-
-

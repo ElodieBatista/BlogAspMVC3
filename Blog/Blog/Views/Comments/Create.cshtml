@@ -1,26 +1,54 @@
-@model Blog.Models.Comment
+@model Blog.ViewModel.CreateCommentViewModel
+@using Blog.Resources
 
-@{
-    ViewBag.Title = "Create";
-}
+@{ViewBag.Title += " - " + Res.AddComment;}
 
-<h2>Create</h2>
+<br />
+<br />
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Create", "Comments")) {
     @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Comment</legend>
+    <div class="comment">
+        <h6>@Res.AddComment</h6>
+        
+		<div class="editor-label">
+            @Html.LabelFor(model => model.Comment.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Comment.Name)
+            @Html.ValidationMessageFor(model => model.Comment.Name)
+        </div>
 
-		@Html.Partial("_CreateOrEdit", Model)
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Comment.Text)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Comment.Text)
+            @Html.ValidationMessageFor(model => model.Comment.Text)
+        </div>
+
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Comment.Posted)
+            @Html.ValidationMessageFor(model => model.Comment.Posted)
+        </div>
+
+        @if (Model.CreateEntire == true) {
+            @Html.DropDownListFor(model => model.Comment.PostId, Model.PossiblePosts.Select(post =>
+                new SelectListItem {
+                    Text = post.Title,
+                    Value = post.Id.ToString()
+                }))
+        } else {
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Comment.PostId)
+            </div>
+        }
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="@Res.Create" />
         </p>
-    </fieldset>
+    </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-
+<br />
+<br />

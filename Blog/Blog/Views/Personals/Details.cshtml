@@ -1,29 +1,19 @@
 @model Blog.Models.Personal
+@using Blog.Resources
 
-@{
-    ViewBag.Title = "Details";
-}
+@{ViewBag.Title += " - " + Res.Details;}
 
-<h2>Details</h2>
+<article>
+    <h3>@Model.Firstname @Model.Lastname</h3>
 
-<fieldset>
-    <legend>Personal</legend>
+    <div class="clear"></div>
 
-    <div class="display-label">Firstname</div>
-    <div class="display-field">@Model.Firstname</div>
-
-    <div class="display-label">Lastname</div>
-    <div class="display-field">@Model.Lastname</div>
-
-    <div class="display-label">Title</div>
-    <div class="display-field">@Model.Title</div>
-
-    <div class="display-label">Description</div>
-    <div class="display-field">@Model.Description</div>
-</fieldset>
+    <span class="bold">@Res.Title:</span> @Model.Title
+    <br />
+    <br />
+	<span class="bold">@Res.Description:</span> @Model.Description
+</article>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(Res.Edit, "Edit", new { id=Model.Id }) |
+    @Html.ActionLink(Res.Back, "Index")
 </p>
-
-

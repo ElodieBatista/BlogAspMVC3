@@ -61,11 +61,128 @@ namespace Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter your comment.
+        ///   Looks up a localized string similar to Add a comment.
+        /// </summary>
+        public static string AddComment {
+            get {
+                return ResourceManager.GetString("AddComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Back.
+        /// </summary>
+        public static string Back {
+            get {
+                return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Blog of .
+        /// </summary>
+        public static string BlogOf {
+            get {
+                return ResourceManager.GetString("BlogOf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comment.
         /// </summary>
         public static string Comment {
             get {
                 return ResourceManager.GetString("Comment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comment Details.
+        /// </summary>
+        public static string CommentDetails {
+            get {
+                return ResourceManager.GetString("CommentDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comments.
+        /// </summary>
+        public static string Comments {
+            get {
+                return ResourceManager.GetString("Comments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this comment?.
+        /// </summary>
+        public static string ConfirmDeleteComment {
+            get {
+                return ResourceManager.GetString("ConfirmDeleteComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this post?.
+        /// </summary>
+        public static string ConfirmDeletePost {
+            get {
+                return ResourceManager.GetString("ConfirmDeletePost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Content.
+        /// </summary>
+        public static string Content {
+            get {
+                return ResourceManager.GetString("Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2012 All rights reserved | Web site developped by .
+        /// </summary>
+        public static string CopyRight {
+            get {
+                return ResourceManager.GetString("CopyRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create.
+        /// </summary>
+        public static string Create {
+            get {
+                return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating a new post.
+        /// </summary>
+        public static string CreatingPost {
+            get {
+                return ResourceManager.GetString("CreatingPost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete a comment.
+        /// </summary>
+        public static string DeleteComment {
+            get {
+                return ResourceManager.GetString("DeleteComment", resourceCulture);
             }
         }
         
@@ -79,11 +196,56 @@ namespace Blog.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        public static string Details {
+            get {
+                return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry, an error occurred while processing your request..
+        /// </summary>
+        public static string ErrorMessage {
+            get {
+                return ResourceManager.GetString("ErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Firstname.
         /// </summary>
         public static string Firstname {
             get {
                 return ResourceManager.GetString("Firstname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
             }
         }
         
@@ -97,7 +259,16 @@ namespace Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter your name.
+        ///   Looks up a localized string similar to More.
+        /// </summary>
+        public static string More {
+            get {
+                return ResourceManager.GetString("More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string Name {
             get {
@@ -106,11 +277,101 @@ namespace Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You post here.
+        ///   Looks up a localized string similar to Create a new comment.
+        /// </summary>
+        public static string NewComment {
+            get {
+                return ResourceManager.GetString("NewComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a New Post.
+        /// </summary>
+        public static string NewPost {
+            get {
+                return ResourceManager.GetString("NewPost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commentaires suivants.
+        /// </summary>
+        public static string NextComments {
+            get {
+                return ResourceManager.GetString("NextComments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next posts.
+        /// </summary>
+        public static string NextPosts {
+            get {
+                return ResourceManager.GetString("NextPosts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string None {
+            get {
+                return ResourceManager.GetString("None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Personal.
+        /// </summary>
+        public static string Personal {
+            get {
+                return ResourceManager.GetString("Personal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Post.
         /// </summary>
         public static string Post {
             get {
                 return ResourceManager.GetString("Post", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posted.
+        /// </summary>
+        public static string Posted {
+            get {
+                return ResourceManager.GetString("Posted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posts.
+        /// </summary>
+        public static string Posts {
+            get {
+                return ResourceManager.GetString("Posts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Previous comments.
+        /// </summary>
+        public static string PreviousComments {
+            get {
+                return ResourceManager.GetString("PreviousComments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Previous posts.
+        /// </summary>
+        public static string PreviousPosts {
+            get {
+                return ResourceManager.GetString("PreviousPosts", resourceCulture);
             }
         }
         
@@ -133,7 +394,7 @@ namespace Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your Firstname is required.
+        ///   Looks up a localized string similar to Your firstname is required.
         /// </summary>
         public static string RequiredFirstName {
             get {
@@ -142,7 +403,7 @@ namespace Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your Lastname is required.
+        ///   Looks up a localized string similar to Your lastname is required.
         /// </summary>
         public static string RequiredLastName {
             get {
@@ -178,11 +439,29 @@ namespace Blog.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Title.
         /// </summary>
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tweet.
+        /// </summary>
+        public static string Tweet {
+            get {
+                return ResourceManager.GetString("Tweet", resourceCulture);
             }
         }
     }
